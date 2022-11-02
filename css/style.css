@@ -206,13 +206,12 @@ img{
     width: 40%;
     padding: 10px;
     border-radius: 10px;
-    margin: 10px;
     position: relative;
-    align-items: flex-end;
+    margin: 10px;
 }
 
 .send span{
-    font-size: .5rem;
+    font-size: .7rem;
     color: #b1b1b1;
     position: absolute;
     right: 5px;
@@ -233,10 +232,11 @@ img{
     color: #b1b1b1;
     position: absolute;
     right: 5px;
-    bottom: 5px;
+    bottom: 2px;
 }
 
 .message-send{
     display: flex;
-    justify-content: flex-end;
+    flex-direction: column;
+    align-items: flex-end;
 }
