@@ -6,13 +6,87 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600;700&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
     <title>Document</title>
 </head>
 <body>
     <div id="app">
-        
-    </div>
-
+        <div class="container">
+            <div class="container-small">
+                <div class="side-list">
+                    <div class="my-profile">
+                        <div class="user-info">
+                            <img src="img/avatar_io.jpg" alt="profile image">
+                            <h3>Sofia</h3>
+                        </div>
+                        <div class="icons">
+                            <i class="fa-solid fa-circle-notch"></i>
+                            <i class="fa-solid fa-message"></i>
+                            <i class="fa-solid fa-ellipsis-vertical"></i>
+                        </div>
+                    </div>
+                    <div class="alert-notifications">
+                        <i class="fa-solid fa-bell-slash"></i>
+                        <div>
+                            <h4>Ricevi notifiche di nuovi messaggi</h4>
+                            <a href="">Attiva notifiche desktop</a>
+                        </div>
+                    </div>
+                    <input class="filter" type="text" placeholder= "Cerca o inizia una nuova chat">
+                    <div class="chat-list">
+                        <div v-for="(user, index) in contacts" class="user-chat">
+                            <img :src="`img/avatar${user.avatar}.jpg`" alt="profile image">
+                            <div class="chat-info">
+                                <div class="name">
+                                    <h4>{{user.name}}</h4>
+                                </div>
+                                <div class="mex">
+                                 <span>
+                                     Ultimo messaggio inviato
+                                 </span>
+                                </div>
+                            </div>
+                        </div>
+                     </div>
+                 </div>
+                 <div class="chat-side">
+                     <div class="header-chat-profile">
+                        <div class="user-chat-info">
+                            <img src="img/avatar_1.jpg" alt="profile image">
+                            <h3>Michele</h3>
+                        </div>
+                        <div class="icon-menu-chat">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                            <i class="fa-solid fa-paperclip"></i>
+                            <i class="fa-solid fa-ellipsis-vertical"></i>
+                        </div>
+                     </div>
+                     <div class="chat">
+                        <div v-for="(user) in contacts" class="message-send">
+                            <div class="send">
+                               <h5>{{user.messages[0].message}}</h5>
+                               <span>{{user.messages[0].date}}</span>
+                            </div>
+                        </div>
+                         <div class="message-recive">
+                             <div class="recive">
+                                <h5>Bene tu?</h5>
+                                <span>15:50</span>
+                            </div>
+                         </div>
+                     </div>
+                     <div class="footer-chat">
+                        <i class="fa-regular fa-face-smile"></i>
+                        <input @keyup.enter="send" class="write-here" type="text" placeholder="Scrivi un messaggio">
+                        <i class="fa-solid fa-microphone"></i>
+                     </div>
+                </div>
+            </div>
+        </div>
+    </div>        
     <script src="js/script.js"></script>
 </body>
 </html>
