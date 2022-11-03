@@ -3,8 +3,8 @@ const{createApp}= Vue;
 createApp({
     data(){
         return{
-            sendMessage : [],
             activeContact: 0,
+            mex: "",
             contacts: [
                 {
                     name: 'Michele',
@@ -169,5 +169,28 @@ createApp({
                 }
             ]   
         }
+    },
+    methods:{
+        currentUser: function(index){
+            this.activeContact = index;
+        },
+        addMex(){
+            const newMex = {
+                message: this.mex,
+                status: `sent`,
+            }
+            this.contacts[this.activeContact].messages.push(newMex);
+            this.mex = "";
+
+            setTimeout(this.botAnswer, 1000);
+        },
+        botAnswer(){
+            const newMex = {
+                date:``,
+                message: `Va bene`,
+                status:`recived`
+            }
+            this.contacts[this.activeContact].messages.push(newMex);
+        },
     }
 }).mount("#app")

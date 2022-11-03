@@ -15,10 +15,12 @@
 <body>
     <div id="app">
         <div class="container">
-            <div class="green-bar">
-            </div>
+            <div class="green-bar"></div>
+            <!-- ACTIVE SECTION -->
             <div class="container-small">
+                <!-- SIDELIST -->
                 <div class="side-list">
+                    <!-- HEADER SIDELIST -->
                     <div class="my-profile">
                         <div class="user-info">
                             <img src="img/avatar_io.jpg" alt="profile image">
@@ -30,6 +32,7 @@
                             <i class="fa-solid fa-ellipsis-vertical"></i>
                         </div>
                     </div>
+                    <!-- NOTIFICATION AREA -->
                     <div class="alert-notifications">
                         <i class="fa-solid fa-bell-slash"></i>
                         <div>
@@ -37,12 +40,14 @@
                             <a href="">Attiva notifiche desktop</a>
                         </div>
                     </div>
+                    <!-- SEARCH -->
                     <div class="search-bar">
                         <label for="search-input"><i class="fa-solid fa-magnifying-glass"></i></label>
                         <input id="search-input" class="filter" type="text" placeholder= "Cerca o inizia una nuova chat">
                     </div>
+                    <!-- USER LIST -->
                     <div class="chat-list">
-                        <div v-for="(user, index) in contacts" class="user-chat">
+                        <div v-for="(user, index) in contacts" class="user-chat"  @click="currentUser(index)" >
                             <img :src="`img/avatar${user.avatar}.jpg`" alt="profile image">
                             <div class="chat-info">
                                 <div class="name">
@@ -57,7 +62,9 @@
                         </div>
                      </div>
                  </div>
+                 <!-- CHAT SIDE -->
                  <div class="chat-side">
+                     <!-- CHAT HEADER -->
                      <div class="header-chat-profile">
                         <div class="user-chat-info">
                             <img :src="`img/avatar${contacts[activeContact].avatar}.jpg`" alt="profile image">
@@ -74,14 +81,14 @@
                             <div :class="messaggio.status === `sent` ? `message-send`:`message-recive`">
                                 <div :class="messaggio.status === `sent` ? `send`:`recive`">
                                     <h5>{{messaggio.message}}</h5>
-                                    <span>15:45</span>
+                                    <span>{{messaggio.date}}</span>
                                 </div>
                             </div>
                         </div>
                      </div>
                      <div class="footer-chat">
                         <i class="fa-regular fa-face-smile"></i>
-                        <input class="write-here" type="text" placeholder="Scrivi un messaggio">
+                        <input v-model="mex" @keyup.enter="addMex" class="write-here" type="text" placeholder="Scrivi un messaggio">
                         <i class="fa-solid fa-microphone"></i>
                      </div>
                 </div>
