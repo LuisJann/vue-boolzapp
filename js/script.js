@@ -1,9 +1,9 @@
 const{createApp}= Vue;
+const dt = luxon.DateTime;
 
 createApp({
     data(){
         return{
-            now:"",
             filter:"",
             activeContact: 0,
             mex: "",
@@ -182,13 +182,13 @@ createApp({
         },
         addMex(){
             const newMex = {
-                data: this.now,
+                date: this.now,
                 message: this.mex,
                 status: `sent`,
             }
             this.contacts[this.activeContact].messages.push(newMex);
             this.mex = "";
-
+            
             setTimeout(this.botAnswer, 1000);
         },
         botAnswer(){
@@ -199,8 +199,8 @@ createApp({
             }
             this.contacts[this.activeContact].messages.push(newMex);
         },
-        created() {
-             this.now = dt.now().setLocale('it').toLocaleString(dt.DATETIME_SHORT_WITH_SECONDS);
-          }
-    }
+    },
+    created() {
+        this.now = dt.now().setLocale('it').toLocaleString(dt.DATETIME_SHORT_WITH_SECONDS);
+      }
 }).mount("#app")
