@@ -3,6 +3,8 @@ const{createApp}= Vue;
 createApp({
     data(){
         return{
+            now:"",
+            filter:"",
             activeContact: 0,
             mex: "",
             contacts: [
@@ -171,11 +173,16 @@ createApp({
         }
     },
     methods:{
+        // filterContact(){
+        //     const word = this.filter;
+        //     this.contacts.name.filter(word);
+        // },
         currentUser: function(index){
             this.activeContact = index;
         },
         addMex(){
             const newMex = {
+                data: this.now,
                 message: this.mex,
                 status: `sent`,
             }
@@ -186,11 +193,14 @@ createApp({
         },
         botAnswer(){
             const newMex = {
-                date:``,
+                date:this.now,
                 message: `Va bene`,
                 status:`recived`
             }
             this.contacts[this.activeContact].messages.push(newMex);
         },
+        created() {
+             this.now = dt.now().setLocale('it').toLocaleString(dt.DATETIME_SHORT_WITH_SECONDS);
+          }
     }
 }).mount("#app")
