@@ -173,34 +173,33 @@ createApp({
         }
     },
     methods:{
-        // filterContact(){
-        //     const word = this.filter;
-        //     this.contacts.name.filter(word);
-        // },
+        filterContact(){
+            const word = this.filter;
+            this.contacts.name.filter(word);
+        },
         currentUser: function(index){
             this.activeContact = index;
         },
         addMex(){
-            const newMex = {
-                date: this.now,
-                message: this.mex,
-                status: `sent`,
+            if(this.mex !== ""){
+                const newMex = {
+                    date:dt.now().setLocale('it').toLocaleString(dt.DATETIME_SHORT_WITH_SECONDS),
+                    message: this.mex,
+                    status: `sent`,
+                }
+                this.contacts[this.activeContact].messages.push(newMex);
+                this.mex = "";
+                setTimeout(this.botAnswer, 1000);
             }
-            this.contacts[this.activeContact].messages.push(newMex);
-            this.mex = "";
             
-            setTimeout(this.botAnswer, 1000);
         },
         botAnswer(){
             const newMex = {
-                date:this.now,
+                date:dt.now().setLocale('it').toLocaleString(dt.DATETIME_SHORT_WITH_SECONDS),
                 message: `Va bene`,
                 status:`recived`
             }
             this.contacts[this.activeContact].messages.push(newMex);
         },
     },
-    created() {
-        this.now = dt.now().setLocale('it').toLocaleString(dt.DATETIME_SHORT_WITH_SECONDS);
-      }
 }).mount("#app")
