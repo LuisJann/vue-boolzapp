@@ -15,6 +15,8 @@
 <body>
     <div id="app">
         <div class="container">
+            <div class="green-bar">
+            </div>
             <div class="container-small">
                 <div class="side-list">
                     <div class="my-profile">
@@ -35,7 +37,10 @@
                             <a href="">Attiva notifiche desktop</a>
                         </div>
                     </div>
-                    <input class="filter" type="text" placeholder= "Cerca o inizia una nuova chat">
+                    <div class="search-bar">
+                        <label for="search-input"><i class="fa-solid fa-magnifying-glass"></i></label>
+                        <input id="search-input" class="filter" type="text" placeholder= "Cerca o inizia una nuova chat">
+                    </div>
                     <div class="chat-list">
                         <div v-for="(user, index) in contacts" class="user-chat">
                             <img :src="`img/avatar${user.avatar}.jpg`" alt="profile image">
@@ -55,8 +60,8 @@
                  <div class="chat-side">
                      <div class="header-chat-profile">
                         <div class="user-chat-info">
-                            <img src="img/avatar_1.jpg" alt="profile image">
-                            <h3>Michele</h3>
+                            <img :src="`img/avatar${contacts[activeContact].avatar}.jpg`" alt="profile image">
+                            <h3>{{contacts[activeContact].name}}</h3>
                         </div>
                         <div class="icon-menu-chat">
                             <i class="fa-solid fa-magnifying-glass"></i>
@@ -65,18 +70,14 @@
                         </div>
                      </div>
                      <div class="chat">
-                        <div class="message-send">
-                            <div class="send">
-                               <h5>Ciao come stai?</h5>
-                               <span>15:45</span>
+                        <div v-for="(messaggio, index) in contacts[activeContact].messages">
+                            <div :class="messaggio.status === `sent` ? `message-send`:`message-recive`">
+                                <div :class="messaggio.status === `sent` ? `send`:`recive`">
+                                    <h5>{{messaggio.message}}</h5>
+                                    <span>15:45</span>
+                                </div>
                             </div>
                         </div>
-                         <div class="message-recive">
-                             <div class="recive">
-                                <h5>Bene tu?</h5>
-                                <span>15:50</span>
-                            </div>
-                         </div>
                      </div>
                      <div class="footer-chat">
                         <i class="fa-regular fa-face-smile"></i>

@@ -22,6 +22,17 @@ img{
     background-color: #dbdbd3;
     display: flex;
     align-items: center;
+    position: relative;
+}
+
+.green-bar{
+    background-color: #009688;
+    height: 15vh;
+    width: 100%;
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    z-index: 0;
 }
 
 .container-small{
@@ -30,6 +41,7 @@ img{
     margin: 0% auto;
     background-color: white;
     max-width: 1200px;
+    min-width: 900px;
     display: flex;
 }
 
@@ -45,6 +57,7 @@ img{
     min-height: 85px;
     display: flex;
     justify-content: space-between;
+    z-index: 999;
 }
 
 .icons{
@@ -57,6 +70,7 @@ img{
     font-size: 1.2rem;
     color: #b1b1b1;
 }
+
 
 .user-info{
     display: flex;
@@ -78,6 +92,7 @@ img{
     padding: 20px;
     display: flex;
     align-items: center;
+    z-index: 998;
 }
 
 .alert-notifications i{
@@ -88,13 +103,35 @@ img{
     font-size: 1.4rem;
 }
 
-.filter{
-    padding: 10px;
-    border-radius: 10px;
-    border: 1px solid #eaeaea;
-    margin: 5px;
+
+.search-bar{
+    width: 100%;
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
 }
 
+.search-bar i{
+    background-color: white;
+    padding: 10px;
+    border: 1px solid #eaeaea;
+    border-radius: 10px 0px 0px 10px ;
+    border-right: 0;
+    cursor: pointer;
+}
+
+.search-bar i:hover{
+    background-color:rgba(233,235,235, .5);
+}
+
+.filter{
+    padding: 10px;
+    border-radius: 0 10px 10px 0;
+    border: 1px solid #eaeaea;
+    width: 80%;
+    border-left: 0;
+}
 .alert-notifications h4, a{
     padding-left: 20px;
 }
@@ -239,4 +276,8 @@ img{
     display: flex;
     flex-direction: column;
     align-items: flex-end;
+}
+
+.none{
+    display: none;
 }

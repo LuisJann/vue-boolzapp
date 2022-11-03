@@ -4,6 +4,7 @@ createApp({
     data(){
         return{
             sendMessage : [],
+            activeContact: 0,
             contacts: [
                 {
                     name: 'Michele',
@@ -168,5 +169,5 @@ createApp({
                 }
             ]   
         }
-    },
+    }
 }).mount("#app")
