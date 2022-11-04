@@ -43,12 +43,12 @@
                     </div>
                     <!-- SEARCH -->
                     <div class="search-bar">
-                        <label @click="filterContact(filter)" for="search-input"><i class="fa-solid fa-magnifying-glass"></i></label>
-                        <input v-model="filter" id="search-input" class="filter" type="text" placeholder= "Cerca o inizia una nuova chat">
+                        <label  for="search-input"><i class="fa-solid fa-magnifying-glass"></i></label>
+                        <input v-model="filter" @keyup="filterContact"   id="search-input" class="filter" type="text" placeholder= "Cerca o inizia una nuova chat">
                     </div>
                     <!-- USER LIST -->
                     <div class="chat-list">
-                        <div v-for="(user, index) in contacts" class="user-chat"  @click="currentUser(index)" >
+                        <div v-for="(user, index) in contacts" v-show="user.visible" class="user-chat"  @click="currentUser(index)">
                             <img :src="`img/avatar${user.avatar}.jpg`" alt="profile image">
                             <div class="chat-info">
                                 <div class="name">
@@ -77,6 +77,7 @@
                             <i class="fa-solid fa-ellipsis-vertical"></i>
                         </div>
                      </div>
+                     <!-- CHAT  -->
                      <div class="chat">
                         <div v-for="(messaggio, index) in contacts[activeContact].messages">
                             <div :class="messaggio.status === `sent` ? `message-send`:`message-recive`">
@@ -87,9 +88,10 @@
                             </div>
                         </div>
                      </div>
+                     <!-- FOOTER CHAT -->
                      <div class="footer-chat">
                         <i class="fa-regular fa-face-smile"></i>
-                        <input v-model="mex" @keyup.enter="addMex" class="write-here" type="text" placeholder="Scrivi un messaggio">
+                        <input v-model.trim="mex" @keyup.enter="addMex" class="write-here" type="text" placeholder="Scrivi un messaggio">
                         <i class="fa-solid fa-microphone"></i>
                      </div>
                 </div>

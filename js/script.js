@@ -4,8 +4,9 @@ const dt = luxon.DateTime;
 createApp({
     data(){
         return{
-            filter:"",
             activeContact: 0,
+            activeContactBot:0,
+            filter:"",
             mex: "",
             contacts: [
                 {
@@ -174,13 +175,23 @@ createApp({
     },
     methods:{
         filterContact(){
-            const word = this.filter;
-            this.contacts.name.filter(word);
+            for(let i = 0; i < this.contacts.length; i++){
+                if(this.contacts[i].name.toLowerCase().startsWith(this.filter.toLowerCase())){
+                    console.log(this.contacts[i]);
+                    this.contacts[i].visible = true;
+                    console.log(this.contacts[i],"if");
+                }else{
+                    this.contacts[i].visible = false;
+                    console.log(this.contacts[i],"else");
+                }
+
+            }
         },
         currentUser: function(index){
             this.activeContact = index;
         },
         addMex(){
+            this.activeContactBot = this.activeContact
             if(this.mex !== ""){
                 const newMex = {
                     date:dt.now().setLocale('it').toLocaleString(dt.DATETIME_SHORT_WITH_SECONDS),
@@ -197,9 +208,9 @@ createApp({
             const newMex = {
                 date:dt.now().setLocale('it').toLocaleString(dt.DATETIME_SHORT_WITH_SECONDS),
                 message: `Va bene`,
-                status:`recived`
+                status:`received`
             }
-            this.contacts[this.activeContact].messages.push(newMex);
+            this.contacts[this.activeContactBot].messages.push(newMex);
         },
     },
 }).mount("#app")
