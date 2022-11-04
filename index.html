@@ -54,6 +54,9 @@
                                 <div class="name">
                                     <h4>{{user.name}}</h4>
                                 </div>
+                                <span class="last-access">
+                                    {{user.messages[user.messages.length - 1].date}}
+                                 </span>
                                 <div class="mex">
                                  <span>
                                      {{user.messages[user.messages.length - 1].message}}
@@ -70,6 +73,7 @@
                         <div class="user-chat-info">
                             <img :src="`img/avatar${contacts[activeContact].avatar}.jpg`" alt="profile image">
                             <h3>{{contacts[activeContact].name}}</h3>
+                            <span>{{contacts[activeContact].messages[contacts[activeContact].messages.length-1].date}}</span>
                         </div>
                         <div class="icon-menu-chat">
                             <i class="fa-solid fa-magnifying-glass"></i>
@@ -82,8 +86,15 @@
                         <div v-for="(messaggio, index) in contacts[activeContact].messages">
                             <div :class="messaggio.status === `sent` ? `message-send`:`message-recive`">
                                 <div :class="messaggio.status === `sent` ? `send`:`recive`">
+                                    <div v-show="!isNone" class="dropdown-menu">
+                                        <ul>
+                                            <li>info</li>
+                                            <li>cancella messaggio</li>
+                                        </ul>
+                                    </div>
                                     <h5>{{messaggio.message}}</h5>
                                     <span>{{messaggio.date}}</span>
+                                    <p @click="dropDown"  class="arrow"><i class="fa-solid fa-angle-down"></i></p>
                                 </div>
                             </div>
                         </div>

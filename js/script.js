@@ -8,6 +8,7 @@ createApp({
             activeContactBot:0,
             filter:"",
             mex: "",
+            isNone:true,
             contacts: [
                 {
                     name: 'Michele',
@@ -174,6 +175,13 @@ createApp({
         }
     },
     methods:{
+        dropDown(){
+            if(this.isNone === false){
+                this.isNone = true
+            }else{
+                this.isNone = false
+            }
+        },
         filterContact(){
             for(let i = 0; i < this.contacts.length; i++){
                 if(this.contacts[i].name.toLowerCase().startsWith(this.filter.toLowerCase())){

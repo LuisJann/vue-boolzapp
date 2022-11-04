@@ -190,6 +190,19 @@ img{
     position: relative;
 }
 
+.chat-info{
+    position: relative;
+    width: 100%;
+}
+
+.last-access{
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    font-size: .6rem;
+    color: #b1b1b1;
+}
+
 .user-chat-info{
     background-color: #eaeaea;
     width: 100%;
@@ -197,6 +210,14 @@ img{
     align-items: center;
     padding: 10px;
     border-left: 2px solid #dbdbd3 ;
+    position: relative;
+}
+
+.user-chat-info span{
+    position: absolute;
+    bottom: 15px;
+    left: 95px;
+    font-size: .7rem;
 }
 
 .user-chat-info img{
@@ -214,6 +235,50 @@ img{
     overflow-y: scroll;
     display: flex;
     flex-direction: column;
+}
+
+.arrow{
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    display: none;
+    cursor: pointer;
+}
+.dropdown-menu{
+    background-color: white;
+    border-radius: 5px;
+    position: absolute;
+    right: 5px;
+    top: 20px;
+    z-index: 997;
+}
+
+.dropdown-menu ul{
+    list-style-type: none;
+    border: 1px solid black;
+}
+
+.dropdown-menu ul li{
+    font-size: .7rem;
+    cursor: pointer;
+    padding: 5px;
+
+}
+
+.dropdown-menu ul :first-child{
+    border-bottom: 1px solid black;
+}
+
+.dropdown-menu ul li:hover{
+    background-color:rgba(233,235,235, .5) ;
+}
+
+.send:hover .arrow{
+    display: block;
+}
+
+.recive:hover .arrow{
+    display: block;
 }
 
 .footer-chat{
@@ -249,6 +314,7 @@ img{
     border-radius: 10px;
     position: relative;
     margin: 10px;
+    position: relative;
 }
 
 .send span{
@@ -282,6 +348,6 @@ img{
     align-items: flex-end;
 }
 
-.none{
-    display: none;
+.block{
+    display: block;
 }
