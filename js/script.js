@@ -174,6 +174,10 @@ createApp({
         }
     },
     methods:{
+        deleteMex(messaggio){ 
+            console.log(this.contacts[this.activeContact].messages);
+            this.contacts[this.activeContact].messages.splice(messaggio, 1)
+        },
         dropDown(messaggio){
             if(messaggio.isNone === true){
 

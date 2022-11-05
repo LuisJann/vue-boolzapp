@@ -89,12 +89,12 @@
                                     <div class="dropdown-menu">
                                         <ul v-if="messaggio.isNone===true">
                                             <li>info</li>
-                                            <li>cancella messaggio</li>
+                                            <li @click="deleteMex(index)">cancella messaggio</li>
                                         </ul>
                                     </div>
                                     <h5>{{messaggio.message}}</h5>
                                     <span>{{messaggio.date}}</span>
-                                    <p @click="dropDown(messaggio)"  class="arrow"><i class="fa-solid fa-angle-down"></i></p>
+                                    <p @click="dropDown(messaggio, index)"  class="arrow"><i class="fa-solid fa-angle-down"></i></p>
                                 </div>
                             </div>
                         </div>
