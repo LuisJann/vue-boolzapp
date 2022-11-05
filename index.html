@@ -60,7 +60,9 @@
                                 <div class="mex">
                                  <span>
                                      {{user.messages[user.messages.length - 1].message}}
-                                 </span>
+                                </span>
+                                
+                                <button @click="deleteChat(index)" class="chat-btn">Delete Chat</button>
                                 </div>
                             </div>
                         </div>
@@ -88,8 +90,8 @@
                                 <div :class="messaggio.status === `sent` ? `send`:`recive`">
                                     <div class="dropdown-menu">
                                         <ul v-if="messaggio.isNone===true">
-                                            <li>info</li>
-                                            <li @click="deleteMex(index)">cancella messaggio</li>
+                                            <li>Info</li>
+                                            <li @click="deleteMex(index)">Elimina messaggio</li>
                                         </ul>
                                     </div>
                                     <h5>{{messaggio.message}}</h5>

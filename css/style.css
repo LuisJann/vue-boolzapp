@@ -353,3 +353,25 @@ img{
 .block{
     display: block;
 }
+
+.chat-btn{
+    padding: 3px;
+    font-size: .8rem;
+    border-radius: 10px;
+    background-color: red;
+    border: 0;
+    color: white;
+    position: absolute;
+    bottom: 0;
+    right: 5px;
+    display: none;
+    cursor: pointer;
+}
+
+.chat-info:hover .chat-btn{
+    display: block;
+}
+
+.chat-btn:hover{
+    font-weight: bold;
+}

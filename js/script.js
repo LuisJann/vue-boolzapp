@@ -174,6 +174,9 @@ createApp({
         }
     },
     methods:{
+        deleteChat(index){
+            this.contacts.splice(index, 1)
+        },
         deleteMex(messaggio){ 
             console.log(this.contacts[this.activeContact].messages);
             this.contacts[this.activeContact].messages.splice(messaggio, 1)
