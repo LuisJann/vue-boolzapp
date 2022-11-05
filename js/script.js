@@ -8,7 +8,6 @@ createApp({
             activeContactBot:0,
             filter:"",
             mex: "",
-            isNone:true,
             contacts: [
                 {
                     name: 'Michele',
@@ -18,17 +17,17 @@ createApp({
                         {
                             date: '10/01/2020 15:30:55',
                             message: 'Hai portato a spasso il cane?',
-                            status: 'sent'
+                            status: 'sent',
                         },
                         {
                             date: '10/01/2020 15:50:00',
                             message: 'Ricordati di stendere i panni',
-                            status: 'sent'
+                            status: 'sent',
                         },
                         {
                             date: '10/01/2020 16:15:22',
                             message: 'Tutto fatto!',
-                            status: 'received'
+                            status: 'received',
                         },
                     ],
                 },
@@ -175,12 +174,15 @@ createApp({
         }
     },
     methods:{
-        dropDown(){
-            if(this.isNone === false){
-                this.isNone = true
+        dropDown(messaggio){
+            if(messaggio.isNone === true){
+
+                messaggio.isNone = false
             }else{
-                this.isNone = false
+                messaggio.isNone = true
             }
+            console.log(messaggio);
+            console.log(this.contacts);
         },
         filterContact(){
             for(let i = 0; i < this.contacts.length; i++){
