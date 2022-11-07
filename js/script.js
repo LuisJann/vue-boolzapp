@@ -177,9 +177,9 @@ createApp({
         deleteChat(index){
             this.contacts.splice(index, 1)
         },
-        deleteMex(messaggio){ 
+        deleteMex(index){ 
             console.log(this.contacts[this.activeContact].messages);
-            this.contacts[this.activeContact].messages.splice(messaggio, 1)
+            this.contacts[this.activeContact].messages.splice(index, 1)
         },
         dropDown(messaggio){
             if(messaggio.isNone === true){
@@ -188,8 +188,6 @@ createApp({
             }else{
                 messaggio.isNone = true
             }
-            console.log(messaggio);
-            console.log(this.contacts);
         },
         filterContact(){
             for(let i = 0; i < this.contacts.length; i++){

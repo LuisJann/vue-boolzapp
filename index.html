@@ -74,6 +74,7 @@
                      <div class="header-chat-profile">
                         <div class="user-chat-info">
                             <img :src="`img/avatar${contacts[activeContact].avatar}.jpg`" alt="profile image">
+                            
                             <h3>{{contacts[activeContact].name}}</h3>
                             <span>Ultimo accesso: {{contacts[activeContact].messages[contacts[activeContact].messages.length-1].date}}</span>
                         </div>
@@ -89,7 +90,7 @@
                             <div :class="messaggio.status === `sent` ? `message-send`:`message-recive`">
                                 <div :class="messaggio.status === `sent` ? `send`:`recive`">
                                     <div class="dropdown-menu">
-                                        <ul v-if="messaggio.isNone===true">
+                                        <ul v-if="messaggio.isNone">
                                             <li>Info</li>
                                             <li @click="deleteMex(index)">Elimina messaggio</li>
                                         </ul>
